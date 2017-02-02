@@ -9,7 +9,20 @@
   <!-- ========= -->
   <!-- Your HTML -->
   <!-- ========= -->
-  <div id="container">Loading...</div>
+
+  <section id="todoapp">
+      <header id="header">
+          <h1>Todos</h1>
+          <input id="new-todo" placeholder="What needs to be done?">
+      </header>    
+      <section id="main">
+          <ul id="todo-list"></ul>
+      </section>    
+  </section>    
+
+
+
+
   <!-- ========= -->
   <!-- Libraries -->
   <!-- ========= -->
@@ -23,20 +36,22 @@
   <!-- =============== -->
   <script type="text/javascript">
 
-    var AppView = Backbone.View.extend({
+  var app = {};
 
-      template: _.template("<h3> Hello <%= who %> !!!</h3>"),
-      el:'#container',
-      initialize:function(){
-        this.render();
-      },
-      render:function(){
-        this.$el.html(this.template({who: 'World'}));
+  app.Todos = Backbone.Model.extend({
+      defaults:{
+          title:'',
+          completed: false
       }
+  });
 
-    });
 
-    var appView = new AppView();
+  var todos = new app.Todos({title:'Learning Backbone.js', completed:false});
+  console.log(todos.get('title'));
+  console.log(todos.get('completed'));
+  console.log(todos.get('created_at'));
+  console.log(todos.set('created_at', Date()));
+  console.log(todos.get('created_at'));
   
   </script>
 </body>
